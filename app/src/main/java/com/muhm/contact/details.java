@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,25 +34,24 @@ public class details extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference dr;
 
-    ImageView btnDelete,btnEdit,btnPayment;
+    ImageView btnDelete, btnEdit, btnPayment;
     Button info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        info=findViewById(R.id.btn_info);
+        info = findViewById(R.id.btn_info);
 
-        details=findViewById(R.id.details);
+        details = findViewById(R.id.details);
         //searchView=findViewById(R.id.for_search);
 
-        db= FirebaseDatabase.getInstance();
-        dr=db.getReference("StudentInformation");
+        db = FirebaseDatabase.getInstance();
+        dr = db.getReference("StudentInformation");
 
 
         studentlist = new ArrayList<>();
-        adapter = new Adapter(details.this,studentlist);
-
+        adapter = new Adapter(details.this, studentlist);
 
 
         //Data find out for set in listview
@@ -58,15 +59,12 @@ public class details extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 studentlist.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    StudentInfoModel studentInfoModel=dataSnapshot.getValue(StudentInfoModel.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    StudentInfoModel studentInfoModel = dataSnapshot.getValue(StudentInfoModel.class);
                     //allstudent.add(studentInfoModel);
                     studentlist.add(studentInfoModel);
-
                 }
                 details.setAdapter(adapter);
-
-
             }
 
             @Override
@@ -76,23 +74,17 @@ public class details extends AppCompatActivity {
         });
 
 
-
-
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(details.this,info_save.class));
+                startActivity(new Intent(details.this, info_save.class));
             }
         });
 
         details.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                studentBottomDialog();
-
-
-
-
+                studentBottomDialog(position);
                 return false;
             }
         });
@@ -101,29 +93,32 @@ public class details extends AppCompatActivity {
     }
 
 
-
-    private void studentBottomDialog(){
-        BottomSheetDialog stDialog=new BottomSheetDialog(this);
+    private void studentBottomDialog(int position) {
+        BottomSheetDialog stDialog = new BottomSheetDialog(this);
         stDialog.setContentView(R.layout.bottom_sheet);
 
-        btnDelete =stDialog.findViewById(R.id.btn_delete);
-        btnEdit=stDialog.findViewById(R.id.btn_edit);
-        btnPayment=stDialog.findViewById(R.id.btn_pymaent);
+        btnDelete = stDialog.findViewById(R.id.btn_delete);
+        btnEdit = stDialog.findViewById(R.id.btn_edit);
+        btnPayment = stDialog.findViewById(R.id.btn_pymaent);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //StudentInfoModel mm=studentlist.get(postion);
-                // String key=mm.getId();
-                //dr.child(key).removeValue();
+                StudentInfoModel mm = studentlist.get(position);
+                String key = mm.getId();
+                dr.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        stDialog.dismiss();
+                    }
+                });
                 Toast.makeText(details.this, "item delete", Toast.LENGTH_SHORT).show();
             }
         });
 
         stDialog.show();
     }
-
 
 
 }
