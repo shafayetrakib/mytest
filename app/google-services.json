@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840621676091",
+    "project_id": "contact-d2ecb",
+    "storage_bucket": "contact-d2ecb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840621676091:android:61e9f3b5d5cb6539ea6e1e",
+        "android_client_info": {
+          "package_name": "com.muhm.contact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxQvYim9txEfa81BMAm-C5D7Nxiy1l2Xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

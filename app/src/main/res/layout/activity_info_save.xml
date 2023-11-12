@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#24D3C2"
+    tools:context=".info_save">
+    <LinearLayout
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shap"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Students Information"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:textColor="#03A9F4"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
+                <EditText
+                    android:id="@+id/serial"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text"
+                    android:hint="serial"
+                    android:textSize="20sp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edt_boxshape"
+                    />
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text"
+                    android:hint="student name"
+                    android:textSize="20sp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edt_boxshape"
+                    />
+                <EditText
+                    android:id="@+id/roll"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text"
+                    android:hint="roll"
+                    android:textSize="20sp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edt_boxshape"
+                    />
+                <EditText
+                    android:id="@+id/father_name"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text"
+                    android:hint="father's name"
+                    android:textSize="20sp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edt_boxshape"
+                    />
+
+                <EditText
+                    android:id="@+id/adress"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:inputType="text"
+                    android:hint="address"
+                    android:textSize="20sp"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edt_boxshape"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="330dp"
+                    android:layout_height="58dp"
+                    android:textColor="@color/white"
+                    android:text="save"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="center"
+                    android:background="#19CDBD"
+                    android:textAllCaps="false"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
